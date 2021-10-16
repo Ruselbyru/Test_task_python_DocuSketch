@@ -52,6 +52,7 @@ if __name__ == '__main__':
     link = 'https://ai-process-sandy.s3.eu-west-1.amazonaws.com/purge/deviation.json'
     x= DrawingPlots(link)
     x.draw_plots(columns=['max','min','mean'], start=0, stop=20)
+    x.draw_plots(columns=['gt_corners', 'rb_corners'], start=0, stop=30)
 
 
 
