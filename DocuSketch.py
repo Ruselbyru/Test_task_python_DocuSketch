@@ -7,20 +7,25 @@ import os
 
 class DrawingPlots:
 
+    # Instance Constructor
     def __init__(self, link):
         self.link=link
 
+    # Charting function
     def draw_plots(self, columns=[], start=0, stop=-1):
         self.columns=columns
         self.start = start
         self.stop = stop
 
+        # read DF from json
         data= pd.read_json(self.link)
         numeric = np.array(data.index[self.start:self.stop])
 
+        # create dir
         if not os.path.isdir('plots'):
             os.mkdir('plots')
 
+        # create plot
         plt.style.use('classic')
         fig, ax = plt.subplots()
         plt.ylabel('value', fontsize= 20)
@@ -32,11 +37,13 @@ class DrawingPlots:
                 ax.plot (numeric, y, label=col)
         except KeyError:
             print(f'Bad name column: {col}')
-
-        file_name = ",".join(self.columns)
         plt.legend()
+
+        # saving file
+        file_name = ",".join(self.columns)
         fig.savefig(f'plots/{file_name}.png')
 
+        # read and save path
         list_path=[]
         for root, dirs, files in os.walk('plots'):
             for file in files:
