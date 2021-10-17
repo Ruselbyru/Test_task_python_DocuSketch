@@ -31,24 +31,25 @@ class DrawingPlots:
         plt.ylabel('value', fontsize= 20)
         plt.xlabel('index', fontsize= 20)
 
+
         try:
             for col in self.columns:
                 y = data[col][self.start:self.stop]
                 ax.plot (numeric, y, label=col)
         except KeyError:
-            print(f'Bad name column: {col}')
-        plt.legend()
+            print (f'Bad name column: {col}')
+        else:
+            plt.legend()
+            # saving file
+            file_name = ",".join(self.columns)
+            fig.savefig(f'plots/{file_name}.png')
 
-        # saving file
-        file_name = ",".join(self.columns)
-        fig.savefig(f'plots/{file_name}.png')
-
-        # read and save path
-        list_path=[]
-        for root, dirs, files in os.walk('plots'):
-            for file in files:
-                list_path.append(os.path.join(root,file))
-        return list_path
+            # read and save path
+            list_path=[]
+            for root, dirs, files in os.walk('plots'):
+                for file in files:
+                    list_path.append(os.path.join(root,file))
+            return list_path
 
 
 
@@ -58,8 +59,9 @@ class DrawingPlots:
 if __name__ == '__main__':
     link = 'https://ai-process-sandy.s3.eu-west-1.amazonaws.com/purge/deviation.json'
     x= DrawingPlots(link)
-    x.draw_plots(columns=['max','min','mean'], start=0, stop=20)
-    x.draw_plots(columns=['gt_corners', 'rb_corners'], start=0, stop=30)
+    x.draw_plots(columns=['max','min','mean'], start=20, stop=45)
+    # x.draw_plots(columns=['mean', 'rb_corners'], start=0, stop=30)
+
 
 
 
