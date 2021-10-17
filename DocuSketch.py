@@ -44,12 +44,12 @@ class DrawingPlots:
             file_name = ",".join(self.columns)
             fig.savefig(f'plots/{file_name}.png')
 
-            # read and save path
-            list_path=[]
-            for root, dirs, files in os.walk('plots'):
-                for file in files:
-                    list_path.append(os.path.join(root,file))
-            return list_path
+        # read and save path
+        list_path=[]
+        for root, dirs, files in os.walk('plots'):
+            for file in files:
+                list_path.append(os.path.join(root,file))
+        return list_path
 
 
 
