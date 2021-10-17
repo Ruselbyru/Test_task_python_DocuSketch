@@ -12,7 +12,7 @@ class DrawingPlots:
         self.link=link
 
     # Charting function
-    def draw_plots(self, columns=[], start=0, stop=-1):
+    def draw_plots(self, columns: list[str], start=0, stop=-1):
         self.columns=columns
         self.start = start
         self.stop = stop
@@ -59,8 +59,9 @@ class DrawingPlots:
 if __name__ == '__main__':
     link = 'https://ai-process-sandy.s3.eu-west-1.amazonaws.com/purge/deviation.json'
     x= DrawingPlots(link)
-    # x.draw_plots(columns=['max','min','mean'], start=20, stop=45)
-    x.draw_plots(columns=['gt_corners', 'rb_corners'], start=0, stop=30)
+    x.draw_plots(columns=['max','min','mean'], start=20, stop=45)
+    # x.draw_plots(columns=['gt_corners', 'rb_corners'], start=0, stop=30)
+
 
 
 
