@@ -12,7 +12,7 @@ class DrawingPlots:
         self.link=link
 
     # Charting function
-    def draw_plots (self, columns: list[str], start=0, stop=-1) -> list:
+    def draw_plots (self, columns=[], start=0, stop=-1):
         self.columns=columns
         self.start = start
         self.stop = stop
